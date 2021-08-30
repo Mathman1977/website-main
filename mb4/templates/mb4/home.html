@@ -1,0 +1,70 @@
+
+{% extends "mb4/base.html" %}
+
+
+{% block header %}
+     <!-- <div class="text-center">
+        <img src="/media/costume%20hoedje%20af.png" class="rond " alt="Mathman Hoedje Af" width="30%" height="6%">
+     </div> -->
+{% endblock header %}
+
+{% block content %}
+<br>
+    {% if request.user.is_authenticated %}
+        <div class="title-block">
+            <br>
+            <h1>Hallo {{ request.user|title }}, </h1>
+            <br>
+            <h2>
+                Jouw openstaande oefeningen:
+            </h2>
+            <br>
+        </div>
+        <div class="container">
+            <div class = "row">
+                {% for reeks in object_list %}
+
+                      <div class="col-sm">
+                        <div class="card" style="width: 24rem;">
+                            <img src="{{reeks.foto}}">
+                            <!-- <img src=" /media/reeks{{ reeks.id }}/reeks{{ reeks.id }}.jpg" class="card-img-top" alt="Foto Reeks"> -->
+                            <div class="card-body">
+                                <h5 class="card-title">{{ reeks.titel }}</h5>
+                                <p class="card-text">
+                                    <ul>
+                                        <li>Uitleg: {{ reeks.uitleg }}</li>
+                                        <li>Soort: {{ reeks.soort }}</li>
+                                        <li>Globale moeilijheidsgraad: {{ reeks.glob_moeilkhgr }}</li>
+                                        <li>Geschatte benodigde tijd: {{ reeks.glob_strtijd }} minuten</li>
+                                        <li>Nodig materiaal:<br>
+                                            {{ reeks.nodig_materiaal }}
+
+                                        </li>
+                                    </ul>
+                                </p>
+                                <div class="form-group text-center">
+                                     <div class = "containerb">
+                                        <a href="{% url 'training' reeks.titel %}"
+                                        class="btn3 effect01"><span>Start training</span></a>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    {% else %}
+            Je bent nog niet ingelogd!
+        <div >
+
+        <small class="text-muted">
+                        <a href="{% url 'login' %}">Log In </a>
+        </small>
+        </div>
+
+    {% endif %}
+{% endblock content %}

@@ -1,0 +1,64 @@
+{% extends "mb4/base.html" %}
+
+
+{% block header %}
+ <div class="text-center">
+    <img src="/media/costume%20hoedje%20af.png" class="rond " alt="Mathman Hoedje Af" width="30%" height="6%">
+ </div>
+{% endblock header %}
+
+
+
+{% block content %}
+
+
+
+    <h1>Goed gedaan, {{ request.user|title }}! <br>
+
+    <h2>
+        <p> {{aantal_juist}} / {{aantal}}<br>
+
+        <p class ="fout">Dit waren je foute antwoorden:
+            {% for fout in foute_antwoorden %}
+                        {{fout}},
+            {% endfor %}
+            </p>
+
+        <p>
+             <p class ="fout">Dit waren je slowmo antwoorden:
+            {% for slowmo in slowmo_antwoorden %}
+                        {{slowmo}},
+            {% endfor %}
+            </p>
+
+        <p>
+
+             Klik hier voor de uitwerkingen van de oefeningen: <br>
+             {% for opg in reeks_opgaven %}
+
+
+            <a  href="{% url 'uitgewerkt' reeks_id opg.id %}">
+                {{opg.id}}
+            </a>,
+
+
+
+            {% endfor %}
+
+        </p>
+
+
+      <br>
+
+<a  class="btn-primary "href="{% url 'index' %}">TERUG NAAR OVERZICHT</a>
+
+</h2>
+
+
+
+
+{% else %}
+        Je bent nog niet ingelogd!
+{% endif %}
+
+{% endblock content %}

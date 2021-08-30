@@ -1,0 +1,91 @@
+{% extends "level/base2.html" %}
+{% block title %}
+   {{opgavenreeks.titel}} - Resultaten
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="title-block shadow-lg p-3 mb-5 rounded">
+       <br>
+    <h1>{{request.user}}, <br>
+        {{delta}} delta<br>
+        {{streeftijd}} streeftijd<br>
+        je hebt {{aantal_juist}} op {{aantal}}</h1>
+        }
+    <br>
+    <h3>
+        <p>Totale tijd: {{delta_minuten}} minuten en {{delta_seconden}} seconden</p>
+        <p>(gemiddelde tijd studenten: {{streeftijd_minuten}} minuten en {{streeftijd_seconden}} seconden)</p>
+    </h3>
+    <br>
+</div>
+<br>
+<br>
+<br>
+
+<h3>
+<div class="container">
+  <div class="row">
+    <div class="col fout">
+        Dit waren je foute antwoorden:
+        <br>
+        {% for fout in fouten %}
+        <a  href="{% url 'uitgewerkt' opgavenreeks.id fout %}">
+            {{fout}}
+            </a>
+              &nbsp
+        {% endfor %}
+    </div>
+    <div class="col slowmo">
+        Dit waren je slowmo antwoorden:
+        <br>
+        {% for slowmo in slowmos %}
+         <a  href="{% url 'uitgewerkt' opgavenreeks.id slowmo %}">
+            {{slowmo}}
+            </a>
+              &nbsp
+        {% endfor %}
+    </div>
+    <div class="col alle">
+              Hier vind je de uitwerkingen van alle oefeningen: <br>
+                    {% for uitw in uitwerkingen %}
+                        <a  href="{% url 'uitgewerkt' opgavenreeks.id uitw %}">{{uitw}}</a>
+                        &nbsp
+                    {% endfor %}
+    </div>
+  </div>
+</div>
+</h3>
+
+<br>
+<br>
+<center>
+<div class="shadow-lg p-3 mb-5 rounded ">
+    <div class = "containerb ">
+        <a href = "{% url 'home' %}"
+            class="btn3 effect01"><span>NAAR OVERZICHT</span></a>
+
+
+
+    </div>
+</div>
+<center>
+
+
+
+
+
+
+{% endblock content %}
+
+
+{% block aside2 %}
+
+{% if opgavenreeks.foto %}
+                       <img src="{{opgavenreeks.foto.url}}" height="400">
+                    {% endif %}
+
+  {% endblock aside2 %}

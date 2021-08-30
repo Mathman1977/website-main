@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="wiskunde, coaching, bijles,roeselare,brugge, kortrijk, ieper, timemanagement,
+        zelfvertrouwen, studieplanning, scholier, student, middelbaar, torhout">
+    <meta name="description" content="Mathman: Waar wiskunde makkelijker wordt.">
+    <meta name="author" content="Ruben Cremmery">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'mb4/main.css' %}">
+
+    <!-- add icon link  -->
+    <link rel="shortcut icon"
+            href="https://lh3.googleusercontent.com/BZRY69H4Ejg9T_st99ifh2OyC-of2EdqaK9o4pgDKkf3qEoICkRr2OmijOmgnwq7iu4Tr2mJyRmuzGIXmVKtLeI=s32"
+            type="image/x-icon">
+
+   <!-- nog aan titel werken    -->
+    <title>
+        Mathman -
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <a class="navbar-brand" href="#">Mathman Academy</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://mathman.lpages.co/" target="new">Link naar vorige website</a>
+          </li>
+
+      </div>
+    </nav>
+    <br>
+    <main role="main" class="container">
+        {% block header %}{% endblock header %}
+
+        {% block content %}{% endblock content %}
+        <br>
+        <br>
+            <img class ="banner" src="/media/Mathman%20banner.png" alt="Mathman Banner" width="50%" height="10%">
+
+    </main>
+
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+

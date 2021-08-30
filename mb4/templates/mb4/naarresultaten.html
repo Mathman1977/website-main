@@ -1,0 +1,57 @@
+
+{% extends "level/base2.html" %}
+{% block title %}
+   {{opgavenreeks.titel}}
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="title-block shadow-lg p-3 mb-5 rounded">
+       <br>
+
+        <h1 >{{ opgavenreeks.titel }}</h1>
+
+
+        <br>
+</div>
+
+
+<center>
+<div class="shadow-lg p-3 mb-5 rounded ">
+    <div class = "containerb ">
+        <a href="{% url 'resultaten' opgavenreeks.id %}"
+            class="btn3 effect01"><span>TERUG NAAR RESULTATEN</span></a>
+        <br>
+
+
+    </div>
+</div>
+
+</center>
+
+
+   </fieldset>
+        <br><br>
+        </form>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+              aria-valuenow="{{afgewerkt}}" aria-valuemin="0" aria-valuemax="100" style="width: {{afgewerkt}}%">
+
+              </div>
+            </div>
+        <br>
+        <br>
+        </h2>
+
+
+{% endblock content %}
+{% block aside2 %}
+
+{% if opgavenreeks.foto %}
+                       <img src="{{opgavenreeks.foto.url}}" height="400">
+                    {% endif %}
+
+  {% endblock aside2 %}

@@ -1,0 +1,33 @@
+{% extends "mb4/base.html" %}
+{% load crispy_forms_tags  %}
+
+{% block header %}
+ <div class="text-center">
+	<img src="/media/costume%20hoedje%20af.png" class="rond " alt="Mathman Hoedje Af" width="30%" height="6%">
+ </div>
+{% endblock header %}
+
+{% block content %}
+	<div class="content-section">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Registreer je!</legend>
+				{{ form|crispy}}
+			</fieldset>
+			<div class="form-group text-center">
+				<div class = "containerb">
+					<br>
+						<button class="btn3 effect01" type="submit"><span>Schrijf je in</span></button>
+					<br>
+				</div>
+			</div>
+
+		</form>
+		<div class="border-top pt-3">
+			<small class="text-muted">
+				Heb je al een account? <a class="ml-2" href="{% url 'login' %}">Ga naar hier</a>
+			</small>
+		</div>
+	</div>
+{% endblock content %}

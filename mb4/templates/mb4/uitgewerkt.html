@@ -1,0 +1,40 @@
+{% extends "mb4/base.html" %}
+
+
+
+{% block header %}
+ <div class="text-center">
+    <img src="/media/costume%20hoedje%20af.png" class="rond " alt="Mathman Hoedje Af" width="30%" height="6%">
+ </div>
+{% endblock header %}
+
+
+
+{% block content %}
+
+<br>
+<br>
+<br>
+{% if request.user.is_authenticated %}
+
+
+        <p class="banner">
+                <img src=" /media/opgaven/oplossingen/opl{{ opgave.id  }}.png "
+                 alt="Uitgewerkte oplossing" width="100%" ><br/>
+        </p>
+        <br>
+        <br>
+
+    <br>
+
+    <h2>
+
+        <a  class="btn-primary "href="{% url 'resultaten' reeks_id %}">TERUG NAAR RESULTATEN</a>
+
+    </h2>
+
+{% else %}
+        Je bent nog niet ingelogd!
+{% endif %}
+
+{% endblock content %}

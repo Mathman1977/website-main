@@ -1,0 +1,39 @@
+{% extends "mb4/base.html" %}
+
+
+
+{% block content %}
+<br>
+<br>
+<br>
+{% if request.user.is_authenticated %}
+
+<legend><h1 ><u>{{ reeks.titel }}</u></h1></legend>
+<br>
+<br>
+    <p class="banner">
+        <img src=" /media/reeks{{ reeks.id  }}.jpg " alt="Foto Reeks" width="60%" height="12%"><br/>
+    </p>
+
+<br>
+<br>
+<h2>
+    <ul>
+    <li>Uitleg: {{ reeks.uitleg }}</li>
+    <li>Soort: {{ reeks.soort }}</li>
+    <li>Globale moeilijheidsgraad: {{ reeks.glob_moeilkhgr }}</li>
+    <li>Geschatte benodigde tijd: {{ reeks.glob_strtijd }} minuten</li>
+    <li>Nodig materiaal: beetje kladpapier en stylo/potlood</li>
+<br>
+
+
+<a  class="btn-primary "href="{% url 'training' reeks_id opgave_id %}">NAAR DE TRAINING</a>
+
+</h2>
+
+
+{% else %}
+        Je bent nog niet ingelogd!
+{% endif %}
+
+{% endblock content %}

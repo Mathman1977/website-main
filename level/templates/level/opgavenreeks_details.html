@@ -1,0 +1,49 @@
+
+{% extends "mb4/base.html" %}
+{% block title %}
+   {{opgavenreeks.titel}}
+
+{% endblock %}
+
+{% block header %}
+     <div class="text-center">
+        <img src="/media/costume%20hoedje%20af.png" class="rond " alt="Mathman Hoedje Af" width="30%" height="6%">
+     </div>
+{% endblock header %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+<h1>{{opgavenreeks.titel}}</h1>
+
+
+<small>
+    {{opgavenreeks.uitleg}}
+
+
+</small>
+
+<br>
+<br>
+<div class="form-group text-center">
+    <div class = "containerb">
+        <a href = "{% url 'home' %}"
+            class="btn3 effect01"><span>TERUG NAAR OVERZICHT</span></a>
+        <br>
+    </div>
+</div>
+
+{% else %}
+        Je bent nog niet ingelogd!
+    <div >
+
+    <small class="text-muted">
+                    <a href="{% url 'login' %}">Log In </a>
+    </small>
+    </div>
+
+{% endif %}
+{% endblock content %}
+
+

@@ -1,0 +1,75 @@
+{% extends "level/base2.html" %}
+{% block title %}
+    Overzicht
+
+{% endblock %}
+
+{% block content %}
+
+<div class="title-block shadow-lg p-3 mb-5 rounded">
+        <br>
+        <h1>Hallo {{ request.user|title }}, </h1>
+        <br>
+        <h2>
+            Jouw openstaande oefeningen:
+        </h2>
+        <br>
+    </div>
+
+<div class="container">
+    <div class = "row">
+        {% for opgavenreeks in object_list %}
+            <div class="col-sm">
+                <div class="card" style="width: 24rem;heigth: 36rem;">
+                    {% if opgavenreeks.foto %}
+                       <img src="{{opgavenreeks.foto.url}}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">>
+
+                            {{ opgavenreeks.titel }}
+
+                        </h5>
+                        <p class="card-text">
+                            <ul>
+                                <li>Uitleg: {{ opgavenreeks.uitleg }}</li>
+                                <li>Soort: {{ opgavenreeks.soort }}</li>
+                                <li>Moeilijkheidsgraad: {{ opgavenreeks.glob_moeilkhgr }}</li>
+                                <li>Geschatte tijd: {{ opgavenreeks.glob_strtijd }} minuten</li>
+                                <li>Nodig materiaal:<br>
+                                    {{ opgavenreeks.nodig_materiaal }}
+                                </li>
+                            </ul>
+                        </p>
+                        <div class="form-group text-center">
+                            <div class = "containerb">
+                                <a href="{% url 'opgavenreeks_training' opgavenreeks.pk %}"
+                                    class="btn3 effect01"><span>Start training</span></a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block aside2 %}
+
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>Minder Tijd voor Betere Punten...</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    RC in <cite title="Source Title">MM C</cite>
+  </figcaption>
+</figure>
+<hr>
+
+
+
+{% endblock aside2 %}

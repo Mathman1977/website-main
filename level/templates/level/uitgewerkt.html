@@ -1,0 +1,109 @@
+
+{% extends "level/base2.html" %}
+{% block title %}
+   {{opgavenreeks.titel}} - Uitgewerkt {{opgave_id}}
+
+{% endblock %}
+
+{% block content %}
+
+{% if foutmelding %}
+            <div class="alert alert-danger" role="alert">
+            {{  foutmelding }}
+            </div>
+{% else %}
+
+<div class="title-block shadow-lg p-3 mb-5 rounded">
+       <br>
+        <h1 >{{ opgavenreeks.titel }}</h1>
+        <h2>Mogelijke Uitwerking Vraag {{ uitw }}</h2>
+
+        <br>
+</div>
+
+<div class="container ">
+<center>
+{% if opgave.opl_foto %}
+     <img src="{{  opgave.opl_foto.url }}" height="720">
+{% endif %}
+</center>
+</div>
+</h3>
+
+<br>
+<br>
+<center>
+<div class="shadow-lg p-3 mb-5 rounded ">
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    {% if oefnr == 1 %}
+    <li class="page-item disabled">
+      <span class="page-link">Vorige</span>
+    </li>
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">{{oefnr}}</span>
+    </li>
+    <li class="page-item"><a class="page-link" href="{% url 'uitgewerkt' opgavenreeks.id oefnr|add:1 %}">{{oefnr|add:1}}</a></li>
+    <li class="page-item">
+      <a class="page-link" href="{% url 'uitgewerkt' opgavenreeks.id oefnr|add:2 %}">{{oefnr|add:2}}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="{% url 'uitgewerkt' opgavenreeks.id oefnr|add:3 %}">Volgende</a>
+    </li>
+
+    {% elif oefnr == 2 %}
+    <li class="page-item disabled">
+      <span class="page-link">Vorige</span>
+    </li>
+    <li class="page-item"><a class="page-link" href="{% url 'uitgewerkt' opgavenreeks.id oefnr|add:-1 %}">{{oefnr|add:-1}}</a></li>
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">{{oefnr}}</span>
+    </li>
+    <li class="page-item"><a class="page-link" href="{% url 'uitgewerkt' opgavenreeks.id oefnr|add:1 %}">{{oefnr|add:1}}</a></li>
+
+    <li class="page-item">
+      <a class="page-link" href="{% url 'uitgewerkt' opgavenreeks.id oefnr|add:3 %}">Volgende</a>
+    </li>
+
+    {% elif oefnr > 2 %}
+
+    <li class="page-item"><a class="page-link" href="{% url 'uitgewerkt' opgavenreeks.id oefnr|add:-2 %}">Vorige</a></li>
+    <li class="page-item"><a class="page-link" href="{% url 'uitgewerkt' opgavenreeks.id oefnr|add:-1 %}">{{oefnr|add:-1}}</a></li>
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">{{oefnr}}</span>
+    </li>
+    <li class="page-item"><a class="page-link" href="{% url 'uitgewerkt' opgavenreeks.id oefnr|add:1 %}">{{oefnr|add:1}}</a></li>
+    <li class="page-item">
+      <a class="page-link" href="{% url 'uitgewerkt' opgavenreeks.id oefnr|add:2 %}">Volgende</a>
+    </li>
+  </ul>
+  {% endif %}
+</nav>
+
+<br>
+
+
+    <div class = "containerb ">
+        <a href="{% url 'resultaten' opgavenreeks.id %}"
+            class="btn3 effect01"><span>NAAR RESULTATEN</span></a>
+        <br>
+
+    </div>
+</div>
+
+</center>
+{% endif %}
+
+{% endblock content %}
+
+
+{% block aside2 %}
+
+{% if opgavenreeks.foto %}
+                       <img src="{{opgavenreeks.foto.url}}" height="400">
+                    {% endif %}
+
+{% endblock aside2 %}
+
+

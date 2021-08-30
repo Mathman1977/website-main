@@ -1,0 +1,87 @@
+
+{% extends "level/base2.html" %}
+{% block title %}
+   {{opgavenreeks.titel}}
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="title-block shadow-lg p-3 mb-5 rounded">
+       <br>
+
+        <h1 >{{ opgavenreeks.titel }}</h1>
+
+
+        <h2>Vraag {{ oefnr }} van {{ aantal }}</h2>
+        <br>
+</div>
+
+        <h2>
+        <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            {% if foutmelding %}
+            <div class="alert alert-danger" role="alert">
+                    {{  foutmelding }}
+
+            </div>
+            {% endif %}
+
+        <span class="align-middle">
+            <div class="row">
+                <div class="col-sm-8">
+                    {% if opgave.opg_foto %}
+                        <img src="{{  opgave.opg_foto.url }}" height="540">
+                    {% endif %}
+                </div>
+                <div class="col-sm-4 text-end">
+                <br><br><br>
+                    <input type="text"  name ="jouw_antwoord" id="jouw_antwoord" autofocus>
+                    <br><br><br><br>
+                    <center>
+                    <input class="btn btn-white btn1-effect lg" type="submit" value="VOLGENDE!">
+                    </center>
+                    <input type="hidden"  name ="opgave_id" value="{{  opgave.id }}">
+                    <input type="hidden"  name ="start" value="{{  start }}">
+                    <input type="hidden"  name ="streeftijd" value="{{  streeftijd }}">
+                    <input type="hidden"  name ="jouw_tijd" value="{{  jouw_tijd }}">
+                    <input type="hidden"  name ="fouten" value="{{  fouten }}">
+                    <input type="hidden"  name ="afgewerkt" value="{{ afgewerkt}}">
+
+
+
+
+                    <br><br>
+
+                </div>
+            </div>
+        </span>
+
+
+
+
+        </fieldset>
+        <br><br>
+        </form>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+              aria-valuenow="{{afgewerkt}}" aria-valuemin="0" aria-valuemax="100" style="width: {{afgewerkt}}%">
+
+              </div>
+            </div>
+
+        <br>
+        </h2>
+
+
+{% endblock content %}
+{% block aside2 %}
+
+{% if opgavenreeks.foto %}
+                       <img src="{{opgavenreeks.foto.url}}" height="400">
+                    {% endif %}
+
+  {% endblock aside2 %}
