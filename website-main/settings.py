@@ -28,7 +28,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-DEBUG = True
+DEBUG = False
+
 
 ALLOWED_HOSTS = []
 
@@ -36,6 +37,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'mb4.apps.Mb4Config',
     'level.apps.LevelConfig',
     'users.apps.UsersConfig',
